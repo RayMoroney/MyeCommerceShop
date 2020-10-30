@@ -155,5 +155,13 @@ namespace MyShop.Services
 
             return model;
         }
+
+        public void ClearBasket(HttpContextBase httpContext)
+        {
+            BasketModel basket = GetBasket(httpContext, false);
+            basket.BasketItems.Clear();
+
+            basketContext.Commit();
+        }
     }
 }
